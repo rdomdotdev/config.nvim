@@ -1,5 +1,5 @@
 -- Open file explorer
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree<CR>")
 
 -- Clear search highlights
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
@@ -25,15 +25,25 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Paste without yanking replaced text
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
 -- Yank to system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
 
 -- Paste from system clipboard
-vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
+
+-- Replace without saving
+vim.keymap.set({ "n", "v" }, "<leader>dp", [["_dP]])
 
 -- Exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
+
+-- Fixed height terminal split
+vim.keymap.set("n", "<leader>t", function()
+	vim.cmd.new()
+	vim.cmd.wincmd("J")
+	vim.api.nvim_win_set_height(0, 15)
+	vim.wo.winfixheight = true
+	vim.cmd.term()
+end)
