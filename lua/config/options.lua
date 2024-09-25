@@ -36,3 +36,7 @@ vim.opt.undofile = true
 -- Split
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Swap
+vim.opt.swapfile = false
+vim.opt.backup = false

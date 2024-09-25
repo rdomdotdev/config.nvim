@@ -1,5 +1,5 @@
 -- Open file explorer
-vim.keymap.set("n", "<leader>e", "<cmd>Neotree<CR>")
+vim.keymap.set("n", "<leader>e", "<cmd>:Neotree<CR>")
 
 -- Clear search highlights
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")

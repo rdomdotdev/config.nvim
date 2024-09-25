@@ -63,6 +63,10 @@ return {
 			pyright = {},
 			rust_analyzer = {},
 			lua_ls = {},
+			texlab = {},
+			tsserver = {},
+			cssls = {},
+			html = {},
 		}
 
 		local lspconfig = require("lspconfig")
@@ -71,5 +75,13 @@ return {
 			config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
 			lspconfig[server_name].setup(config)
 		end
+
+		local on_attach = function(client, bufnr)
+			vim.api.nvim_command("set filetype=gdscript")
+		end
+
+		lspconfig.gdscript.setup({
+			on_attach = on_attach,
+		})
 	end,
 }
